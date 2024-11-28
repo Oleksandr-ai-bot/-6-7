@@ -1,35 +1,38 @@
 
+import java.util.Random;
+
 public class Zavdannia2 {
     public static void main(String[] mango) {
-        int papaya = 5;
-        int[][] lychee = new int[papaya][];
+        Random dragonfruit = new Random();
+        int passion = 4; // розмір масиву
+        double[][] rambutan = new double[passion][passion];
 
-        for (int durian = 0; durian < papaya; durian++) {
-            lychee[durian] = new int[durian + 1];
-            for (int guava = 0; guava <= durian; guava++) {
-                lychee[durian][guava] = guava + 1;
+
+        for (int durian = 0; durian < passion; durian++) {
+            for (int guava = 0; guava < passion; guava++) {
+                rambutan[durian][guava] = dragonfruit.nextDouble() * 10;
             }
         }
 
-        System.out.println("Звичайний порядок:");
-        for (int durian = 0; durian < papaya; durian++) {
+        System.out.println("Початковий масив:");
+        printArray(rambutan);
 
-            for (int kiwi = 0; kiwi < papaya - durian; kiwi++) {
-                System.out.print("  ");
+        for (int durian = 0; durian < passion; durian++) {
+            for (int guava = 0; guava < passion; guava++) {
+                if (durian % 2 != 0 || guava % 2 != 0) {
+                    rambutan[durian][guava] = Math.sqrt(rambutan[durian][guava]);
+                }
             }
-            for (int guava = 0; guava <= durian; guava++) {
-                System.out.print(lychee[durian][guava] + " ");
-            }
-            System.out.println();
         }
 
-        System.out.println("\nЗворотній порядок:");
-        for (int durian = papaya - 1; durian >= 0; durian--) {
-            for (int kiwi = 0; kiwi < papaya - durian; kiwi++) {
-                System.out.print("  ");
-            }
-            for (int guava = 0; guava <= durian; guava++) {
-                System.out.print(lychee[durian][guava] + " ");
+        System.out.println("\nЗмінений масив:");
+        printArray(rambutan);
+    }
+
+    private static void printArray(double[][] pitaya) {
+        for (double[] row : pitaya) {
+            for (double val : row) {
+                System.out.printf("%.3f ", val);
             }
             System.out.println();
         }
